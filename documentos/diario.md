@@ -13,7 +13,7 @@
 |---|---|
 | Etapa 1 – Formação da equipe e escolha do tema | Concluída |
 | Etapa 2 – Pesquisa e planejamento | Concluída (13/11/2026) |
-| Etapa 3 – Atividade prática (laboratório) | Em andamento: laboratório pronto e testado; faltam os prints |
+| Etapa 3 – Atividade prática (laboratório) | Documentação pronta; faltam só os prints (lista em `evidencias/README.md`) |
 | Etapa 4 – Apresentação | Não iniciada |
 
 ---
@@ -131,6 +131,15 @@ Criada a pasta `documentos/` com o arquivo `Etapa 2 - Pesquisa e Planejamento.md
 - Criado o `README.md` da raiz, que apresenta o projeto no GitHub.
 - Criado o `.gitignore`: os PDFs do professor (`apoio/` e `Roteiro/`) **não** vão para o GitHub.
 - Projeto enviado para https://github.com/wiliafsilva/Projeto_Seguranca
+- O primeiro envio saiu com a linha `Co-Authored-By: Claude` e o GitHub listou o Claude como contribuidor. O commit foi corrigido (sem coautoria) e reenviado pela equipe. **Regra:** commits só em nome da equipe.
+
+### Documentação da Etapa 3
+
+- A geração automática dos prints foi interrompida e **não** será feita pelo assistente. **Os prints ficam com a equipe**, seguindo o roteiro do `laboratorio/README.md`.
+- Criado `documentos/Etapa 3 - Atividade Pratica.md`, com os 5 itens que o roteiro pede para a etapa: ambiente, ferramentas, procedimentos, resultados com evidências, análise e medidas de proteção, além de um apêndice com a comparação do código vulnerável × seguro.
+- Criado o diagrama `evidencias/diagrama-laboratorio.png` (e `.svg`).
+- Criado `evidencias/README.md` com a lista dos **18 prints** a tirar, com nome de arquivo, o que mostrar e a legenda pronta. Também foram criadas as subpastas `C1/`, `C2/`, `C3/`, `C4/` e `logs/`.
+- Os resultados da seção 5 do relatório vêm dos testes feitos no laboratório em 13/11.
 
 ---
 
@@ -195,7 +204,7 @@ laboratorio/
 - [x] Versão `segura/`: mesma aplicação com as correções da seção 6 (preço vindo do banco, `filter_input`, checagem de dono do pedido, lista de campos permitidos e consultas parametrizadas)
 - [x] Testar se as duas versões sobem com um único comando (`docker compose up`)
 
-**3.3 Executar os cenários e coletar evidências**
+**3.3 Executar os cenários e coletar evidências** (lista completa e legendas em `evidencias/README.md`)
 
 Para cada cenário (C1 a C4), na versão vulnerável e depois na segura:
 - [ ] Print da página ou do código-fonte mostrando o ponto fraco
@@ -203,11 +212,12 @@ Para cada cenário (C1 a C4), na versão vulnerável e depois na segura:
 - [ ] Print da requisição alterada
 - [ ] Print do resultado do ataque (sucesso na vulnerável, bloqueio na segura)
 - [x] Anotar os comandos `curl` usados (estão no `laboratorio/README.md`)
-- [ ] Salvar tudo em `evidencias/C1/`, `evidencias/C2/`, etc., com nomes padronizados (ex.: `C1-01-codigo-fonte.png`)
+- [ ] Salvar tudo em `evidencias/C1/`, `evidencias/C2/`, etc., com os nomes do `evidencias/README.md` (pastas já criadas)
 
 **3.4 Material de apoio**
-- [ ] Diagrama final da arquitetura do laboratório
-- [ ] Comparação lado a lado do código vulnerável e do corrigido, para cada cenário
+- [x] Diagrama final da arquitetura do laboratório (`evidencias/diagrama-laboratorio.png`)
+- [x] Comparação do código vulnerável e do corrigido, para cada cenário (Apêndice A do relatório da Etapa 3)
+- [x] Relatório da Etapa 3 (`documentos/Etapa 3 - Atividade Pratica.md`)
 - [ ] (Opcional) Repetir um cenário parecido no DVWA ou no Juice Shop, para comparar
 
 ### Etapa 4 – Documento técnico, slides e apresentação
