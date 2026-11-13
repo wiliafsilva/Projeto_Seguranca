@@ -1,0 +1,42 @@
+# Loja Lab – laboratório do Tema 4 (Segurança em aplicações Web)
+# USO EXCLUSIVO EM AMBIENTE LOCAL. A versão "vulneravel" tem falhas de propósito.
+#
+#   docker compose up -d --build     → sobe o laboratório
+#   http://localhost:8000             → página inicial (links para as duas versões)
+#   docker compose down -v            → desliga e apaga o banco (volta ao estado inicial)
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_lab
+      MYSQL_USER: loja
+      MYSQL_PASSWORD: loja_lab
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - dados:/var/lib/mysql
+    healthcheck:
+      # Só fica "saudável" quando o init.sql terminou (a última tabela criada existe)
+      # e o servidor aceita conexões pela rede.
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-uloja", "-ploja_lab", "-e", "SELECT 1 FROM loja_segura.pedidos LIMIT 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8000:80"   # só acessível pela própria máquina
+    environment:
+      DB_HOST: db
+      DB_USER: loja
+      DB_PASS: loja_lab
+    volumes:
+      - ./www:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  dados:

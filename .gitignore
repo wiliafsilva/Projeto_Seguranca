@@ -1,0 +1,14 @@
+# Material da disciplina (slides e roteiro do professor): não publicar
+apoio/
+Roteiro/
+
+# Arquivos do sistema e de editores
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+.vscode/
+
+# Cookies gerados pelos comandos curl dos testes
+*.txt
+!requirements.txt
