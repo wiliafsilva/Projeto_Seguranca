@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($_POST as $campo => $valor) {
         if ($campo !== 'id' && in_array($campo, $colunas, true)) {
             $sets[]    = "`$campo` = ?";
-            $valores[] = (string) $valor;
+            $valores[] = trim((string) $valor);
         }
     }
 

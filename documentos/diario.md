@@ -115,6 +115,16 @@ Criada a pasta `documentos/` com o arquivo `Etapa 2 - Pesquisa e Planejamento.md
 - Ajuste: a verificação de saúde do MySQL foi corrigida para o site só subir depois que os bancos estão criados.
 - O laboratório foi zerado e está no estado inicial, pronto para os prints.
 
+### 14/11/2026 – Coleta das evidências (Etapa 3 concluída)
+
+- A equipe instalou o Burp Suite Community e coletou os prints dos 4 cenários, nas duas versões, mais os logs. Total: **24 prints + 1 diagrama**, na pasta `evidencias/`.
+- C1 (7 prints): campo oculto, Burp antes/depois, pedido por R$ 0,01, e a versão segura cobrando R$ 2.499,90.
+- C2 (7 prints): navegador bloqueando -10, Burp, pedido R$ -899,00, estoque 50→60, e a versão segura recusando (HTTP 400).
+- C3 (4 prints): "Meus pedidos", pedido próprio (id=1), dados do Bruno (id=2), e a versão segura "Pedido não encontrado".
+- C4 (5 prints): acesso negado, Burp com perfil=admin, Ana no painel com os CPFs de todos, e a versão segura sem painel / acesso negado.
+- Logs (1 print): as três medidas de proteção registradas pela versão segura.
+- Ajuste no código: `perfil.php` vulnerável passou a aplicar `trim()` no valor recebido, para a demonstração não travar se o Burp enviar uma quebra de linha junto (isso não remove a falha de atribuição em massa).
+
 ### Visual de loja real, passo a passo e GitHub
 
 - **Novo visual da Loja Lab**, imitando uma loja virtual de verdade (marca fictícia, sem copiar nenhuma loja existente):

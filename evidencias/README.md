@@ -22,47 +22,53 @@ Salve cada print com o nome exato da tabela, dentro da subpasta do cenário (`C1
 
 | ✔ | Arquivo | O que mostrar | Legenda |
 |---|---|---|---|
-| ☐ | `C1/C1-01-codigo-fonte-hidden.png` | Ctrl+U na página do Notebook, com a linha `name="preco" value="2499.90"` | Preço do produto enviado ao navegador em um campo oculto |
-| ☐ | `C1/C1-02-burp-original.png` | Burp com a requisição de compra interceptada: `preco=2499.90` | Requisição de compra interceptada no Burp Suite |
-| ☐ | `C1/C1-03-burp-alterada.png` | A mesma requisição com `preco=0.01` | Requisição alterada: preço trocado para 0,01 |
-| ☐ | `C1/C1-04-vulneravel-pedido.png` | Página do pedido com Total R$ 0,01 | Versão vulnerável: pedido registrado por R$ 0,01 |
-| ☐ | `C1/C1-05-segura-pedido.png` | Versão segura, mesmo ataque, Total R$ 2.499,90 | Versão segura: o preço enviado é ignorado |
+| ✅ | `C1/C1-01-codigo-fonte-hidden.png` | Ctrl+U na página do Notebook, com a linha `name="preco" value="2499.90"` | Preço do produto enviado ao navegador em um campo oculto |
+| ✅ | `C1/C1-02-burp-original.png` | Burp com a requisição de compra interceptada: `preco=2499.90` | Requisição de compra interceptada no Burp Suite |
+| ✅ | `C1/C1-03-burp-alterada.png` | A mesma requisição com `preco=0.01` | Requisição alterada: preço trocado para 0,01 |
+| ✅ | `C1/C1-04-vulneravel-pedido.png` | Página do pedido com Total R$ 0,01 | Versão vulnerável: notebook de R$ 2.499,90 registrado por R$ 0,01 |
+| ✅ | `C1/C1-05-segura-burp-sem-preco.png` | Burp na versão segura: corpo só com `produto_id=1&quantidade=1` | Versão segura: o formulário não envia mais o preço |
+| ✅ | `C1/C1-06-segura-burp-com-preco.png` | Burp na versão segura com `&preco=0.01` acrescentado | Tentativa de forçar o preço na versão segura |
+| ✅ | `C1/C1-07-segura-pedido.png` | Pedido da versão segura com Total R$ 2.499,90 | Versão segura: o preço enviado é ignorado e o valor vem do banco |
 
 ## C2 – Quantidade negativa
 
 | ✔ | Arquivo | O que mostrar | Legenda |
 |---|---|---|---|
-| ☐ | `C2/C2-01-navegador-bloqueia.png` | Aviso do navegador ao tentar comprar `-10` | O navegador bloqueia a quantidade inválida (validação no cliente) |
-| ☐ | `C2/C2-02-requisicao-negativa.png` | Burp ou terminal com `quantidade=-10` | Requisição enviada direto ao servidor com quantidade -10 |
-| ☐ | `C2/C2-03-vulneravel-pedido.png` | Pedido com Total R$ -899,00 | Versão vulnerável: pedido com total negativo |
-| ☐ | `C2/C2-04-vulneravel-estoque.png` | Página do Mouse com 60 disponíveis | Versão vulnerável: o estoque aumentou de 50 para 60 |
-| ☐ | `C2/C2-05-segura-recusa.png` | "Compra recusada – Quantidade inválida" | Versão segura: compra recusada pelo servidor (HTTP 400) |
+| ✅ | `C2/C2-01-navegador-bloqueia.png` | Aviso do navegador ao tentar comprar `-10` | O navegador bloqueia a quantidade inválida (validação no cliente) |
+| ✅ | `C2/C2-02-requisicao-negativa.png` | Burp ou terminal com `quantidade=-10` | Requisição enviada direto ao servidor com quantidade -10 |
+| ✅ | `C2/C2-03-vulneravel-pedido.png` | Pedido nº 6 com Total R$ -899,00 | Versão vulnerável: pedido com total negativo |
+| ✅ | `C2/C2-04-vulneravel-estoque.png` | Página do Mouse com 60 disponíveis | Versão vulnerável: o estoque aumentou de 50 para 60 |
+| ✅ | `C2/C2-05-segura-estoque.png` | Versão segura: Mouse com 50 disponíveis | Versão segura: estoque antes da tentativa |
+| ✅ | `C2/C2-06-segura-burp-negativa.png` | Burp na versão segura com `quantidade=-10` | Mesma requisição com quantidade -10 enviada à versão segura |
+| ✅ | `C2/C2-07-segura-recusa.png` | "Compra recusada – Quantidade inválida" | Versão segura: compra recusada pelo servidor (HTTP 400) |
 
 ## C3 – Pedido de outro cliente (IDOR)
 
 | ✔ | Arquivo | O que mostrar | Legenda |
 |---|---|---|---|
-| ☐ | `C3/C3-01-pedido-proprio.png` | Pedido nº 1 da Ana, com `pedido.php?id=1` na barra | Pedido da própria cliente, identificado pelo número na URL |
-| ☐ | `C3/C3-02-vulneravel-outro-cliente.png` | `pedido.php?id=2` com nome, CPF e endereço do Bruno | Versão vulnerável: dados pessoais de outro cliente expostos |
-| ☐ | `C3/C3-03-segura-nao-encontrado.png` | `pedido.php?id=2` com "Pedido não encontrado" | Versão segura: acesso negado ao pedido de outro cliente |
+| ✅ | `C3/C3-01-meus-pedidos.png` | Lista "Meus pedidos" da Ana (nº 1, 3, 4, 5, 6; sem o nº 2) | A lista mostra só os pedidos da própria cliente |
+| ✅ | `C3/C3-02-pedido-proprio.png` | Pedido nº 1 da Ana, com `pedido.php?id=1` na barra | Pedido da própria cliente, identificado pelo número na URL |
+| ✅ | `C3/C3-03-vulneravel-outro-cliente.png` | `pedido.php?id=2` com nome, CPF e endereço do Bruno | Versão vulnerável: dados pessoais de outro cliente expostos ao trocar o número na URL |
+| ✅ | `C3/C3-04-segura-nao-encontrado.png` | `segura/pedido.php?id=2` com "Pedido não encontrado" | Versão segura: acesso negado ao pedido de outro cliente |
 
 ## C4 – Elevação para administrador
 
 | ✔ | Arquivo | O que mostrar | Legenda |
 |---|---|---|---|
-| ☐ | `C4/C4-01-acesso-negado.png` | `admin.php` com "Acesso negado" (Ana) | Cliente comum sem acesso ao painel administrativo |
-| ☐ | `C4/C4-02-burp-perfil-admin.png` | Burp com `&perfil=admin` no fim do corpo | Requisição de "Meus dados" com o campo extra perfil=admin |
-| ☐ | `C4/C4-03-vulneravel-painel.png` | Painel admin aberto pela Ana | Versão vulnerável: cliente promovida a administradora |
-| ☐ | `C4/C4-04-segura-negado.png` | Versão segura, mesmo ataque, "Acesso negado" | Versão segura: o campo extra é ignorado |
+| ✅ | `C4/C4-01-acesso-negado.png` | `admin.php` com "Acesso negado" (Ana) | Cliente comum sem acesso ao painel administrativo |
+| ✅ | `C4/C4-02-burp-perfil-admin.png` | Burp com `&perfil=admin` no fim do corpo | Requisição de "Meus dados" com o campo extra perfil=admin |
+| ✅ | `C4/C4-03-vulneravel-painel.png` | Painel admin aberto pela Ana | Versão vulnerável: cliente promovida a administradora |
+| ✅ | `C4/C4-04-segura-sem-painel.png` | Versão segura após o ataque: "Meus dados" sem o link Painel admin | Versão segura: o campo perfil é ignorado; a cliente não é promovida |
+| ✅ | `C4/C4-05-segura-negado.png` | `segura/admin.php` com "Acesso negado" | Versão segura: cliente continua sem acesso ao painel |
 
 ## Logs
 
 | ✔ | Arquivo | O que mostrar | Legenda |
 |---|---|---|---|
-| ☐ | `logs/logs-01-segura.png` | Terminal com `docker compose logs web \| grep loja-segura` | Tentativas de ataque registradas pela versão segura |
+| ✅ | `logs/logs-01-segura.png` | Terminal com `docker compose logs web \| grep loja-segura` | Tentativas de ataque registradas pela versão segura |
 
 ---
 
-**Total:** 18 prints + 1 diagrama.
+**Total:** 24 prints + 1 diagrama.
 
 Depois de tirar os prints, me avise: eu encaixo as figuras no documento técnico final e nos slides.
