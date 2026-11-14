@@ -153,6 +153,17 @@ Criada a pasta `documentos/` com o arquivo `Etapa 2 - Pesquisa e Planejamento.md
 
 ---
 
+## 14/11/2026 – Etapa 4 (documento, slides e roteiro)
+
+- **Documento técnico final** (`documentos/Documento Tecnico Final.md/.docx/.pdf`): 18 páginas, no formato de artigo da UNIT (modelo em `template/`). Times New Roman, texto em preto, com título, resumo/abstract, palavras-chave, seções numeradas (1 a 7), 25 figuras e 2 tabelas numeradas, declaração de uso de IA e referências [n]. As 24 evidências da Etapa 3 entraram como figuras.
+- **Slides** (`documentos/Apresentacao.pptx/.pdf`): 15 slides no estilo do template da UNIT (modelo `template/Apresentacao_compiladores.pptx`): navy, dourado e logo da UNIT, com capa, índice, introdução, um slide por cenário e conclusão. Falas divididas entre Daniel e Wilia nas notas. Fonte mínima 18, sem travessões, sem rodapé de texto.
+- **Roteiro da apresentação** (`documentos/Roteiro da Apresentacao.md`): checklist de preparação, divisão das falas, passo a passo de cada demonstração e perguntas prováveis com respostas.
+- Ajustes a pedido da equipe: o documento seguiu o template de artigo da UNIT (preto, Times New Roman, sem cores) e o rodapé ficou só com o número da página; os slides seguiram o template de apresentação da UNIT; nenhum travessão é usado no documento nem nos slides; a fonte dos slides é no mínimo 18.
+
+> **Atenção (declaração de IA):** o documento inclui uma Declaração de Uso de Inteligência Artificial. A equipe deve revisá-la e ajustá-la para refletir com exatidão o uso real e as normas da UNIT, assumindo a autoria e a responsabilidade pelo conteúdo.
+
+---
+
 ## Arquivos produzidos
 
 ```
